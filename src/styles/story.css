@@ -1,0 +1,162 @@
+.chapter-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #1e1e2f;
+
+    border: 1px solid #34344e;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    color: white;
+}
+
+.chapter-info {
+
+    flex: 1;
+}
+
+.chapter-info h3 {
+
+    margin: 0 0 10px 0;
+
+    color: #9f7aea;
+}
+
+.chapter-description {
+
+    margin-bottom: 10px;
+
+    color: #d1d5db;
+}
+
+.chapter-status {
+
+    font-weight: bold;
+}
+
+.chapter-action {
+
+    margin-left: 20px;
+}
+
+.chapter-btn {
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #7c3aed;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.chapter-btn:hover {
+
+    background: #8b5cf6;
+}
+
+.stories-container {
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    padding: 30px;
+}
+
+.stories-title {
+
+    text-align: center;
+
+    color: white;
+
+    margin-bottom: 30px;
+}
+
+.story-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #1f2937;
+
+    border: 1px solid #374151;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 15px;
+
+    transition: 0.3s;
+}
+
+.story-card:hover {
+
+    transform: translateY(-3px);
+
+    border-color: #7c3aed;
+}
+
+.story-info {
+
+    flex: 1;
+}
+
+.story-info h2 {
+
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+.story-info p {
+
+    color: #d1d5db;
+
+    margin: 0;
+}
+
+.story-play-btn {
+
+    background: #7c3aed;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 25px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-left: 20px;
+}
+
+.story-play-btn:hover {
+
+    background: #9333ea;
+}

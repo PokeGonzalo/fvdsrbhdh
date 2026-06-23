@@ -1,0 +1,111 @@
+require("dotenv").config()
+require("./config/db")
+
+const express = require("express")
+const cors = require("cors")
+
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+const authRoutes =
+    require("./routes/authRoutes")
+
+const questionRoutes =
+    require("./routes/questionRoutes")
+
+const gameRoutes =
+    require("./routes/gameRoutes")
+
+const rankingRoutes =
+    require("./routes/rankingRoutes")
+
+const profileRoutes =
+    require("./routes/profileRoutes")
+
+const planRoutes =
+    require("./routes/planRoutes")
+
+const storeRoutes =
+    require("./routes/storeRoutes")
+
+const achievementRoutes =
+    require(
+        "./routes/achievementRoutes"
+    )
+
+const publicationRoutes =
+    require(
+        "./routes/publicationRoutes"
+    )
+
+const historyRoutes =
+    require(
+        "./routes/historyRoutes"
+    )
+const userRoutes =
+    require("./routes/userRoutes"
+    )
+
+const path =
+    require("path")
+
+
+app.use("/api/auth", authRoutes)
+
+app.use("/api/questions", questionRoutes)
+
+app.use("/api/games", gameRoutes)
+
+app.use("/api/ranking", rankingRoutes)
+
+app.use("/api/profile", profileRoutes)
+
+app.use("/api/plans", planRoutes)
+
+app.use("/api/publications", publicationRoutes)
+
+app.use("/api/achievements", achievementRoutes)
+
+app.use("/api/store", storeRoutes)
+
+app.use("/api/history",historyRoutes)
+
+app.use("/api",userRoutes)
+
+app.use(
+    "/images",
+    express.static(
+        path.join(
+            __dirname,
+            "../public/images"
+        )
+    )
+)
+
+app.get("/", (req, res) => {
+    res.send("API REALMIND funcionando")
+})
+
+const PORT = 3000
+
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`)
+})
+
+const db = require("./config/db")
+
+app.get("/usuarios", (req, res) => {
+
+    const query = "SELECT * FROM Usuario"
+
+    db.query(query, (err, result) => {
+
+        if (err) {
+            return res.status(500).json(err)
+        }
+
+        res.json(result)
+    })
+})
