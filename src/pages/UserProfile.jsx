@@ -9,6 +9,7 @@ import {
 
 import "../styles/profile.css"
 import Navbar from "../components/Navbar"
+import UserAvatar from "../components/Avatar";
 
 function UserProfile() {
 
@@ -18,28 +19,58 @@ function UserProfile() {
     const [achievements, setAchievements] =
         useState([])
 
+    const [avatar, setAvatar] =
+        useState(null)
+
     const { idUsuario } = useParams()
 
     useEffect(() => {
 
-        fetch(
-    `http://localhost:3000/api/users/${idUsuario}`
-)
-.then(res => res.json())
-.then(data => {
+    fetch(
+        `http://localhost:3000/api/users/${idUsuario}`
+    )
+    .then(res => res.json())
+    .then(data => {
 
-    console.log(data)
-
-    setProfile(data)
-})
-
-        fetch(
-            `http://localhost:3000/api/achievements/${idUsuario}`
+        console.log(
+            "PERFIL:",
+            data
         )
-        .then(res => res.json())
-        .then(data => setAchievements(data))
 
-    }, [idUsuario])
+        setProfile(data)
+    })
+
+
+    fetch(
+        `http://localhost:3000/api/achievements/${idUsuario}`
+    )
+    .then(res => res.json())
+    .then(data => setAchievements(data))
+
+
+    fetch(
+        `http://localhost:3000/api/avatars/${idUsuario}`
+    )
+    .then(res => res.json())
+    .then(data => {
+
+        console.log(
+            "AVATAR DEL USUARIO:",
+            data
+        )
+
+        setAvatar(data)
+    })
+    .catch(error => {
+
+        console.error(
+            "Error cargando avatar:",
+            error
+        )
+
+    })
+
+}, [idUsuario])
 
     if (!profile) {
 
@@ -59,19 +90,30 @@ function UserProfile() {
                 <div className="profile-avatar-card">
 
                     {
-    profile.fotoPerfil
-        ? (
-            <img
-                src={`http://localhost:3000/images/perfiles/${profile.fotoPerfil}`}
-                alt="Perfil"
-                className="profile-avatar"
-            />
-        )
-        : (
-            <div className="avatar-placeholder">
-                Sin foto
-            </div>
-        )
+    avatar && (
+
+
+        <div className="avatar-placeholder">
+
+    <div className="profile-avatar-container">
+
+        <UserAvatar
+            topType={avatar.peinado}
+            hairColor={avatar.colorPelo}
+            skinColor={avatar.colorPiel}
+            eyeType={avatar.ojos}
+            eyebrowType={avatar.cejas}
+            mouthType={avatar.boca}
+            clotheType={avatar.ropa}
+            clotheColor={avatar.colorRopa}
+            accessoriesType={avatar.accesorio}
+        />
+
+    </div>
+
+</div>
+
+    )
 }
 
                     <div className="profile-names">

@@ -48,6 +48,10 @@ const userRoutes =
     require("./routes/userRoutes"
     )
 
+const avatarRoutes = 
+    require("./routes/avatarRoutes"
+    )
+
 const path =
     require("path")
 
@@ -73,6 +77,8 @@ app.use("/api/store", storeRoutes)
 app.use("/api/history",historyRoutes)
 
 app.use("/api",userRoutes)
+
+app.use("/api/avatars", avatarRoutes)
 
 app.use(
     "/images",

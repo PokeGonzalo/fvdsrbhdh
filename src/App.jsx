@@ -21,6 +21,7 @@ import StoryGame from './pages/StoryGame'
 import UserProfile from './pages/UserProfile'
 import DemoGame from "./pages/DemoGame"
 import DemoFinish from './pages/DemoFinish'
+import AvatarEditor from "./pages/AvatarEditor"
 
 function App() {
 
@@ -105,6 +106,11 @@ function App() {
 <Route
     path="/demo-finish"
     element={<DemoFinish />}
+/>
+
+<Route
+    path="/avatar-editor"
+    element={<AvatarEditor />}
 />
 
 <Route

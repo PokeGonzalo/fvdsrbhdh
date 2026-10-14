@@ -3,8 +3,11 @@ import {
     useState
 } from "react"
 
+import { useNavigate } from "react-router-dom"
+
 import "../styles/profile.css"
 import Navbar from "../components/Navbar"
+import UserAvatar from "../components/Avatar"
 
 function Profile() {
 
@@ -24,6 +27,10 @@ function Profile() {
 
     const [selectedPhoto, setSelectedPhoto] =
     useState(null)
+
+    const [avatar, setAvatar] = useState(null)
+
+    const navigate = useNavigate()
 
     const activateItem = async (idItem) => {
 
@@ -133,6 +140,33 @@ const uploadPhoto = async () => {
 
     useEffect(() => {
 
+        if (!user) {
+        return
+    }
+
+    fetch(
+        `http://localhost:3000/api/avatars/${user.idUsuario}`
+    )
+        .then(res => res.json())
+        .then(data => {
+
+            console.log(
+                "AVATAR DEL PERFIL:",
+                data
+            )
+
+            setAvatar(data)
+
+        })
+        .catch(error => {
+
+            console.error(
+                "Error al cargar avatar:",
+                error
+            )
+
+        })
+
         fetch(
         `http://localhost:3000/api/profile/${user.idUsuario}`
     )
@@ -194,36 +228,44 @@ const uploadPhoto = async () => {
         <div className="avatar-placeholder">
 
     {
-        profile.fotoPerfil
-        ? (
-            <img
-                src={`http://localhost:3000/images/perfiles/${profile.fotoPerfil}`}
-                alt="Perfil"
-                className="profile-image"
-            />
-        )
-        : (
-            "Sin foto"
-        )
+        avatar
+            ? (
+
+                <div className="profile-avatar-container">
+
+    <UserAvatar
+        topType={avatar.peinado}
+        hairColor={avatar.colorPelo}
+        skinColor={avatar.colorPiel}
+        eyeType={avatar.ojos}
+        eyebrowType={avatar.cejas}
+        mouthType={avatar.boca}
+        clotheType={avatar.ropa}
+        clotheColor={avatar.colorRopa}
+        accessoriesType={avatar.accesorio}
+    />
+
+</div>
+
+            )
+            : (
+                <p>
+                    Todavía no tenés un avatar
+                </p>
+            )
+
     }
 
 </div>
 
-<input className="subir-foto"
-    type="file"
-    accept="image/*"
-    onChange={(e) =>
-        setSelectedPhoto(
-            e.target.files[0]
-        )
-    }
-/>
-
 <button
-    onClick={uploadPhoto}
+    onClick={() => navigate("/avatar-editor")}
+    className="edit-avatar-btn"
 >
-    Cambiar Foto
+    Editar avatar
 </button>
+
+
 
         <div className="profile-names">
 
