@@ -6,7 +6,7 @@ const getAvatar = (req, res) => {
 
     const query = `
         SELECT *
-        FROM Avatar
+        FROM avatar
         WHERE idUsuario = ?
     `
 
@@ -54,7 +54,7 @@ const createAvatar = (req, res) => {
 
 
     const query = `
-        INSERT INTO Avatar
+        INSERT INTO avatar
         (
             idUsuario,
             peinado,
@@ -128,7 +128,7 @@ const updateAvatar = (req, res) => {
 
 
     const query = `
-        UPDATE Avatar
+        UPDATE avatar
         SET
             peinado = ?,
             colorPelo = ?,

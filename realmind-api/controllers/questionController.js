@@ -96,7 +96,7 @@ const getQuestionsByCategory = (req, res) => {
 
     FROM Pregunta p
 
-    INNER JOIN Categoria c
+    INNER JOIN categoria c
         ON p.idCategoria = c.idCategoria
 
     LEFT JOIN Respuesta r
