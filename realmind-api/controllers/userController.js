@@ -48,7 +48,7 @@ const getUserById = (req, res) => {
                 0
             ) AS mejorPuntaje
 
-        FROM Usuario u
+        FROM usuario u
 
         LEFT JOIN Partida pa
             ON u.idUsuario = pa.idUsuario

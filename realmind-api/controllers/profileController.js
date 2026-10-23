@@ -32,7 +32,7 @@ const getProfile = (req, res) => {
                 0
             ) AS mejorPuntaje
 
-        FROM Usuario u
+        FROM usuario u
 
         INNER JOIN planpago p
             ON u.idPlan = p.idPlan

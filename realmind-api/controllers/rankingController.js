@@ -16,7 +16,7 @@ const getRanking = (req, res) => {
 
     FROM Partida p
 
-    INNER JOIN Usuario u
+    INNER JOIN usuario u
         ON p.idUsuario = u.idUsuario
 
     WHERE p.idEstadoPartida = 2

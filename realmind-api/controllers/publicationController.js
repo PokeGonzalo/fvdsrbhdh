@@ -23,7 +23,7 @@ const getPublications = (req, res) => {
 
         FROM Publicacion p
 
-        INNER JOIN Usuario u
+        INNER JOIN usuario u
             ON p.idUsuario = u.idUsuario
 
         ORDER BY
