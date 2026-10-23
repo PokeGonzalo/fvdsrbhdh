@@ -257,9 +257,9 @@ const getStoryAnswers = (
             ELSE false
         END AS correcta
 
-    FROM Respuesta r
+    FROM respuesta r
 
-    INNER JOIN OpcionRespuesta o
+    INNER JOIN opcionRespuesta o
         ON r.idOpcionRespuesta =
            o.idOpcionRespuesta
 
