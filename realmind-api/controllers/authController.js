@@ -36,7 +36,7 @@ const register = async (req, res) => {
 
             // Insertar usuario
             const insertQuery = `
-                INSERT INTO Usuario
+                INSERT INTO usuario
                 (nombre, email, passwordHash, idRol, idPlan)
                 VALUES (?, ?, ?, 2, 1)
             `

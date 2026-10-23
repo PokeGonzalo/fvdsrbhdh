@@ -5,7 +5,7 @@ const updatePlan = (req, res) => {
     const { idUsuario, idPlan } = req.body
 
     const query = `
-        UPDATE Usuario
+        UPDATE usuario
         SET idPlan = ?
         WHERE idUsuario = ?
     `

@@ -21,7 +21,7 @@ const getPublications = (req, res) => {
             
             u.apodoActivo
 
-        FROM Publicacion p
+        FROM publicacion p
 
         INNER JOIN usuario u
             ON p.idUsuario = u.idUsuario
@@ -52,7 +52,7 @@ const createPublication = (req, res) => {
     } = req.body
 
     const query = `
-        INSERT INTO Publicacion
+        INSERT INTO publicacion
         (
             idUsuario,
             contenido
@@ -89,7 +89,7 @@ const addLike = (req, res) => {
 
     const checkQuery = `
         SELECT *
-        FROM LikePublicacion
+        FROM likepublicacion
         WHERE idUsuario = ?
         AND idPublicacion = ?
     `
@@ -113,7 +113,7 @@ const addLike = (req, res) => {
             }
 
             const insertLike = `
-                INSERT INTO LikePublicacion
+                INSERT INTO likepublicacion
                 (
                     idUsuario,
                     idPublicacion
@@ -132,7 +132,7 @@ const addLike = (req, res) => {
                     }
 
                     const updateLikes = `
-                        UPDATE Publicacion
+                        UPDATE publicacion
                         SET likes = likes + 1
                         WHERE idPublicacion = ?
                     `
@@ -166,7 +166,7 @@ const getUsers = (req, res) => {
             idUsuario,
             nombre,
             apodoActivo
-        FROM Usuario
+        FROM usuario
     `
 
     db.query(

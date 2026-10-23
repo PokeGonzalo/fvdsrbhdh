@@ -35,7 +35,7 @@ const checkAchievements = (idUsuario) => {
 
             const achievementsQuery = `
                 SELECT *
-                FROM Logro
+                FROM logro
             `
 
             db.query(
@@ -73,7 +73,7 @@ const checkAchievements = (idUsuario) => {
 
                                 SELECT *
 
-                                FROM UsuarioLogro
+                                FROM usuariologro
 
                                 WHERE idUsuario = ?
 
@@ -98,7 +98,7 @@ const checkAchievements = (idUsuario) => {
 
                                     const insertQuery = `
 
-                                        INSERT INTO UsuarioLogro
+                                        INSERT INTO usuariologro
 
                                         (
                                             idUsuario,

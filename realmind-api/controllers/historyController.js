@@ -4,7 +4,7 @@ const getStories = (req, res) => {
 
     const query = `
         SELECT *
-        FROM Historia
+        FROM historia
         WHERE activa = 1
     `
 
@@ -38,7 +38,7 @@ const getStoryQuestions =
 
     hp.descripcionCapitulo
 
-FROM HistoriaPregunta hp
+FROM historiapregunta hp
 
 INNER JOIN pregunta p
     ON hp.idPregunta = p.idPregunta
@@ -75,7 +75,7 @@ const getStoryProgress = (
     const query = `
         SELECT *
 
-        FROM UsuarioHistoria
+        FROM usuariohistoria
 
         WHERE idUsuario = ?
         AND idHistoria = ?
@@ -120,7 +120,7 @@ const saveStoryProgress = (
     } = req.body
 
     const query = `
-        INSERT INTO UsuarioHistoriaPregunta
+        INSERT INTO usuariohistoriapregunta
         (
             idUsuario,
             idHistoria,
@@ -176,7 +176,7 @@ const completeStory = (
     } = req.body
 
     const query = `
-        UPDATE UsuarioHistoria
+        UPDATE usuariohistoria
 
         SET
 
@@ -295,7 +295,7 @@ const getCompletedQuestions = (
     const query = `
         SELECT idPregunta
 
-        FROM UsuarioHistoriaPregunta
+        FROM usuariohistoriapregunta
 
         WHERE idUsuario = ?
         AND idHistoria = ?

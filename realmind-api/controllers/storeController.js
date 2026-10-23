@@ -8,7 +8,7 @@ const getStoreItems = (req, res) => {
 
     const query = `
     SELECT *
-    FROM ItemTienda
+    FROM itemtienda
     WHERE activo = TRUE
     AND tipoItem != 'APODO_LOGRO'
 `
@@ -41,7 +41,7 @@ const buyItem = (req, res) => {
 
     const itemQuery = `
         SELECT *
-        FROM ItemTienda
+        FROM itemtienda
         WHERE idItem = ?
     `
 
@@ -68,7 +68,7 @@ const buyItem = (req, res) => {
 
             const userQuery = `
                 SELECT monedas
-                FROM Usuario
+                FROM usuario
                 WHERE idUsuario = ?
             `
 
@@ -119,7 +119,7 @@ const buyItem = (req, res) => {
 
                         db.query(
                             `
-                            UPDATE Usuario
+                            UPDATE usuario
                             SET monedas = monedas - ?
                             WHERE idUsuario = ?
                             `,
@@ -138,7 +138,7 @@ const buyItem = (req, res) => {
 
                             db.query(
                                 `
-                                INSERT INTO UsuarioItem
+                                INSERT INTO usuarioitem
                                 (
                                     idUsuario,
                                     idItem,
@@ -161,7 +161,7 @@ const buyItem = (req, res) => {
 
                             db.query(
                                 `
-                                INSERT INTO UsuarioItem
+                                INSERT INTO usuarioitem
                                 (
                                     idUsuario,
                                     idItem,
@@ -188,7 +188,7 @@ const buyItem = (req, res) => {
 
                         db.query(
                             `
-                            INSERT INTO MovimientoMoneda
+                            INSERT INTO movimientomoneda
                             (
                                 idUsuario,
                                 cantidad,
@@ -233,7 +233,7 @@ const buyItem = (req, res) => {
                         db.query(
                             `
                             SELECT *
-                            FROM UsuarioItem
+                            FROM usuarioitem
                             WHERE idUsuario = ?
                             AND idItem = ?
                             `,
@@ -312,7 +312,7 @@ const activateBooster = (req, res) => {
 
             const getItemQuery = `
                 SELECT valorItem
-                FROM ItemTienda
+                FROM itemtienda
                 WHERE idItem = ?
             `
 
@@ -329,7 +329,7 @@ const activateBooster = (req, res) => {
 
                     const checkInventoryQuery = `
                         SELECT cantidad
-                        FROM UsuarioItem
+                        FROM usuarioitem
                         WHERE idUsuario = ?
                         AND idItem = ?
                     `
@@ -389,7 +389,7 @@ const activateBooster = (req, res) => {
                     return res.status(500).json(err)
 
                 const discountQuery = `
-                    UPDATE UsuarioItem
+                    UPDATE usuarioitem
                     SET cantidad = cantidad - 1
                     WHERE idUsuario = ?
                     AND idItem = ?
@@ -432,9 +432,9 @@ const getInventory = (req, res) => {
 
     ui.cantidad
 
-FROM UsuarioItem ui
+FROM usuarioitem ui
 
-INNER JOIN ItemTienda i
+INNER JOIN itemtienda i
     ON ui.idItem = i.idItem
 
 WHERE ui.idUsuario = ?

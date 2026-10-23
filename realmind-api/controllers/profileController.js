@@ -37,7 +37,7 @@ const getProfile = (req, res) => {
         INNER JOIN planpago p
             ON u.idPlan = p.idPlan
 
-        LEFT JOIN Partida pa
+        LEFT JOIN partida pa
             ON u.idUsuario = pa.idUsuario
 
         WHERE u.idUsuario = ?
@@ -63,7 +63,7 @@ const updateNickname = (req, res) => {
     } = req.body
 
     const query = `
-        UPDATE Usuario
+        UPDATE usuario
         SET apodoActivo = ?
         WHERE idUsuario = ?
     `

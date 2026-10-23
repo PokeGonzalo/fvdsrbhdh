@@ -14,7 +14,7 @@ const getRanking = (req, res) => {
         SUM(p.puntajeTotal)
             AS puntajeTotal
 
-    FROM Partida p
+    FROM partida p
 
     INNER JOIN usuario u
         ON p.idUsuario = u.idUsuario

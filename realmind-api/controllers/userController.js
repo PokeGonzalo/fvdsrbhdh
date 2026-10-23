@@ -8,7 +8,7 @@ const getUsers = (req, res) => {
             idUsuario,
             nombre,
             apodoActivo
-        FROM Usuario
+        FROM usuario
     `
 
     db.query(
@@ -50,7 +50,7 @@ const getUserById = (req, res) => {
 
         FROM usuario u
 
-        LEFT JOIN Partida pa
+        LEFT JOIN partida pa
             ON u.idUsuario = pa.idUsuario
 
         WHERE u.idUsuario = ?

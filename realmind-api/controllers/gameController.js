@@ -17,7 +17,7 @@ const createGame = (req, res) => {
     } = req.body
 
     const query = `
-        INSERT INTO Partida
+        INSERT INTO partida
         (
             idUsuario,
             fechaInicio,
@@ -83,7 +83,7 @@ const finishGame = (req, res) => {
     )
 
     const query = `
-        UPDATE Partida
+        UPDATE partida
 
         SET
             fechaFin = NOW(),
@@ -107,7 +107,7 @@ const finishGame = (req, res) => {
 
             const getUserQuery = `
                 SELECT idUsuario
-                FROM Partida
+                FROM partida
                 WHERE idPartida = ?
             `
 
@@ -143,7 +143,7 @@ const finishGame = (req, res) => {
 
                     db.query(
                         `
-                        UPDATE Usuario
+                        UPDATE usuario
 
                         SET monedas =
                             monedas + ?
@@ -160,7 +160,7 @@ const finishGame = (req, res) => {
 
                     db.query(
                         `
-                        INSERT INTO MovimientoMoneda
+                        INSERT INTO movimientomoneda
                         (
                             idUsuario,
                             cantidad,
@@ -207,7 +207,7 @@ const getGames = (req, res) => {
 
     const query = `
         SELECT *
-        FROM Partida
+        FROM partida
     `
 
     db.query(query, (err, result) => {

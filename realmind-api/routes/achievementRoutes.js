@@ -34,9 +34,9 @@ router.get(
 
         END AS obtenido
 
-    FROM Logro l
+    FROM logro l
 
-    LEFT JOIN UsuarioLogro ul
+    LEFT JOIN usuariologro ul
 
         ON l.idLogro = ul.idLogro
 
