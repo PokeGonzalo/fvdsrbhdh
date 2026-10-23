@@ -68,61 +68,69 @@ const register = async (req, res) => {
 // LOGIN
 // ======================
 
+
 const login = (req, res) => {
+    const { email, password } = req.body;
 
-    const {
-        email,
-        password
-    } = req.body
+    if (!email || !password) {
+        return res.status(400).json({
+            message: "Completá el email y la contraseña"
+        });
+    }
 
-    const query =
-        "SELECT * FROM Usuario WHERE email = ?"
+    const query = "SELECT * FROM Usuario WHERE email = ?";
 
     db.query(query, [email], async (err, result) => {
-
         if (err) {
-            return res.status(500).json(err)
+            console.error("Error en login:", err);
+            return res.status(500).json({
+                message: "Error al consultar la base de datos"
+            });
         }
 
         if (result.length === 0) {
             return res.status(404).json({
                 message: "Usuario no encontrado"
-            })
+            });
         }
 
-        const user = result[0]
+        try {
+            const user = result[0];
 
-        const validPassword =
-            await bcrypt.compare(
+            const validPassword = await bcrypt.compare(
                 password,
                 user.passwordHash
-            )
+            );
 
-        if (!validPassword) {
-            return res.status(401).json({
-                message: "Contraseña incorrecta"
-            })
-        }
-
-        // TOKEN
-        const token = jwt.sign(
-            {
-                id: user.idUsuario,
-                email: user.email
-            },
-            "REALMIND_SECRET",
-            {
-                expiresIn: "24h"
+            if (!validPassword) {
+                return res.status(401).json({
+                    message: "Contraseña incorrecta"
+                });
             }
-        )
 
-        res.json({
-            message: "Login exitoso",
-            token,
-            user
-        })
-    })
-}
+            const token = jwt.sign(
+                {
+                    id: user.idUsuario,
+                    email: user.email
+                },
+                process.env.JWT_SECRET || "REALMIND_SECRET",
+                { expiresIn: "24h" }
+            );
+
+            return res.json({
+                message: "Login exitoso",
+                token,
+                user
+            });
+        } catch (error) {
+            console.error("Error procesando login:", error);
+            return res.status(500).json({
+                message: "Error interno al iniciar sesión"
+            });
+        }
+    });
+};
+
 
 module.exports = {
     register,
