@@ -20,7 +20,7 @@ const register = async (req, res) => {
 
         // Verificar email existente
         const checkQuery =
-            "SELECT * FROM Usuario WHERE email = ?"
+            "SELECT * FROM usuario WHERE email = ?"
 
         db.query(checkQuery, [email], async (err, result) => {
 
@@ -78,7 +78,7 @@ const login = (req, res) => {
         });
     }
 
-    const query = "SELECT * FROM Usuario WHERE email = ?";
+    const query = "SELECT * FROM usuario WHERE email = ?";
 
     db.query(query, [email], async (err, result) => {
         if (err) {

@@ -228,7 +228,7 @@ const getDemoQuestions = (req, res) => {
             r.idRespuesta,
             r.textoRespuesta,
             r.idOpcionRespuesta
-        FROM Pregunta p
+        FROM pregunta p
         LEFT JOIN Respuesta r
             ON p.idPregunta = r.idPregunta
         WHERE p.idPregunta IN

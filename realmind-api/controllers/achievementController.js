@@ -13,7 +13,7 @@ const checkAchievements = (idUsuario) => {
                 0
             ) AS puntos
 
-        FROM Partida
+        FROM partida
 
         WHERE idUsuario = ?
 

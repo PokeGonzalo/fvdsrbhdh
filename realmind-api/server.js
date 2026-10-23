@@ -110,7 +110,7 @@ const db = require("./config/db")
 
 app.get("/usuarios", (req, res) => {
 
-    const query = "SELECT * FROM Usuario"
+    const query = "SELECT * FROM usuario"
 
     db.query(query, (err, result) => {
 
