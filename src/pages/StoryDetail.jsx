@@ -43,7 +43,7 @@ function StoryDetail() {
     useEffect(() => {
 
         fetch(
-            `http://localhost:3000/api/history/${idHistoria}/questions`
+            `https://realmind-api.onrender.com/api/history/${idHistoria}/questions`
         )
 
         .then(res => res.json())
@@ -53,7 +53,7 @@ function StoryDetail() {
         )
 
         fetch(
-            `http://localhost:3000/api/history/progress/${user.idUsuario}/${idHistoria}`
+            `https://realmind-api.onrender.com/api/history/progress/${user.idUsuario}/${idHistoria}`
         )
 
         .then(res => res.json())
@@ -63,7 +63,7 @@ function StoryDetail() {
         )
 
         fetch(
-            `http://localhost:3000/api/history/completed/${user.idUsuario}/${idHistoria}`
+            `https://realmind-api.onrender.com/api/history/completed/${user.idUsuario}/${idHistoria}`
         )
 
         .then(res => res.json())

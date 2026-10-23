@@ -27,7 +27,7 @@ function UserProfile() {
     useEffect(() => {
 
     fetch(
-        `http://localhost:3000/api/users/${idUsuario}`
+        `https://realmind-api.onrender.com/api/users/${idUsuario}`
     )
     .then(res => res.json())
     .then(data => {
@@ -42,14 +42,14 @@ function UserProfile() {
 
 
     fetch(
-        `http://localhost:3000/api/achievements/${idUsuario}`
+        `https://realmind-api.onrender.com/api/achievements/${idUsuario}`
     )
     .then(res => res.json())
     .then(data => setAchievements(data))
 
 
     fetch(
-        `http://localhost:3000/api/avatars/${idUsuario}`
+        `https://realmind-api.onrender.com/api/avatars/${idUsuario}`
     )
     .then(res => res.json())
     .then(data => {

@@ -84,7 +84,7 @@ const [infiniteLives, setInfiniteLives] =
     // Crear partida
 
     fetch(
-        "http://localhost:3000/api/games/start",
+        "https://realmind-api.onrender.com/api/games/start",
         {
             method: "POST",
 
@@ -123,7 +123,7 @@ const [infiniteLives, setInfiniteLives] =
     // Obtener booster activo
 
     fetch(
-        `http://localhost:3000/api/store/active-booster/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/store/active-booster/${user.idUsuario}`
     )
 
     .then((response) =>
@@ -145,7 +145,7 @@ const [infiniteLives, setInfiniteLives] =
     // Cargar preguntas
 
     fetch(
-        `http://localhost:3000/api/questions/${categoria}`
+        `https://realmind-api.onrender.com/api/questions/${categoria}`
     )
 
     .then(async (response) => {
@@ -274,7 +274,7 @@ if (user.idPlan === 3) {
         )
 
         await fetch(
-            "http://localhost:3000/api/games/finish",
+            "https://realmind-api.onrender.com/api/games/finish",
             {
                 method: "PUT",
 

@@ -323,7 +323,7 @@ const accessoryNames = [
     }
 
     fetch(
-        `http://localhost:3000/api/avatars/${user.idUsuario}`
+        `1. https://realmind-api.onrender.com/api/avatars/${user.idUsuario}`
     )
         .then(res => res.json())
         .then(data => {
@@ -520,9 +520,9 @@ const saveAvatar = () => {
 
     const url = avatarExists
 
-        ? `http://localhost:3000/api/avatars/${user.idUsuario}`
+        ? `1. https://realmind-api.onrender.com/api/avatars/${user.idUsuario}`
 
-        : "http://localhost:3000/api/avatars"
+        : "1. https://realmind-api.onrender.com/api/avatars"
 
 
     const method = avatarExists

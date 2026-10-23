@@ -35,7 +35,7 @@ function Profile() {
     const activateItem = async (idItem) => {
 
     const response = await fetch(
-        "http://localhost:3000/api/store/activate",
+        "https://realmind-api.onrender.com/api/store/activate",
         {
             method: "PUT",
 
@@ -62,7 +62,7 @@ function Profile() {
 const equipNickname = async (apodo) => {
 
     const response = await fetch(
-        "http://localhost:3000/api/profile/apodo",
+        "https://realmind-api.onrender.com/api/profile/apodo",
         {
             method: "PUT",
 
@@ -112,7 +112,7 @@ const uploadPhoto = async () => {
 
     const response =
         await fetch(
-            "http://localhost:3000/api/profile/photo",
+            "https://realmind-api.onrender.com/api/profile/photo",
             {
                 method: "POST",
                 body: formData
@@ -145,7 +145,7 @@ const uploadPhoto = async () => {
     }
 
     fetch(
-        `http://localhost:3000/api/avatars/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/avatars/${user.idUsuario}`
     )
         .then(res => res.json())
         .then(data => {
@@ -168,7 +168,7 @@ const uploadPhoto = async () => {
         })
 
         fetch(
-        `http://localhost:3000/api/profile/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/profile/${user.idUsuario}`
     )
 
     .then((response) =>
@@ -186,7 +186,7 @@ const uploadPhoto = async () => {
     // Logros
 
     fetch(
-        `http://localhost:3000/api/achievements/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/achievements/${user.idUsuario}`
     )
 
     .then((response) =>
@@ -199,7 +199,7 @@ const uploadPhoto = async () => {
     })
 
     fetch(
-    `http://localhost:3000/api/store/inventory/${user.idUsuario}`
+    `https://realmind-api.onrender.com/api/store/inventory/${user.idUsuario}`
 )
 .then(res => res.json())
 .then(data => setInventory(data))

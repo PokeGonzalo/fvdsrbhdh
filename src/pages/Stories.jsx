@@ -15,7 +15,7 @@ function Stories() {
     useEffect(() => {
 
         fetch(
-            "http://localhost:3000/api/history"
+            "https://realmind-api.onrender.com/api/history"
         )
 
         .then(res => res.json())

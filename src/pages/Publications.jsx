@@ -40,7 +40,7 @@ function Publications() {
     loadPublications()
 
     fetch(
-        "http://localhost:3000/api/users"
+        "https://realmind-api.onrender.com/api/users"
     )
     .then(res => res.json())
     .then(data =>
@@ -52,7 +52,7 @@ function Publications() {
     useEffect(() => {
 
     fetch(
-        "http://localhost:3000/api/publications"
+        "https://realmind-api.onrender.com/api/publications"
     )
     .then(res => res.json())
     .then(data =>
@@ -64,7 +64,7 @@ function Publications() {
 const loadPublications = () => {
 
     fetch(
-        "http://localhost:3000/api/publications"
+        "https://realmind-api.onrender.com/api/publications"
     )
     .then(res => res.json())
     .then(data =>
@@ -77,7 +77,7 @@ const loadPublications = () => {
     if (!content.trim()) return
 
     const response = await fetch(
-        "http://localhost:3000/api/publications",
+        "https://realmind-api.onrender.com/api/publications",
         {
             method: "POST",
             headers: {
@@ -110,7 +110,7 @@ const loadPublications = () => {
 
     const response = await fetch(
 
-        `http://localhost:3000/api/publications/like/${id}`,
+        `https://realmind-api.onrender.com/api/publications/like/${id}`,
 
         {
             method: "PUT",
@@ -145,7 +145,7 @@ const loadPublications = () => {
 const giveLike = async (idPublicacion) => {
 
     await fetch(
-        `http://localhost:3000/api/publications/like/${idPublicacion}`,
+        `https://realmind-api.onrender.com/api/publications/like/${idPublicacion}`,
         {
             method: "POST"
         }
@@ -163,7 +163,7 @@ useEffect(() => {
 useEffect(() => {
 
     fetch(
-        "http://localhost:3000/api/users"
+        "https://realmind-api.onrender.com/api/users"
     )
     .then(res => res.json())
     .then(data => {

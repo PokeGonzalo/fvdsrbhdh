@@ -11,7 +11,7 @@ function Ranking() {
     useEffect(() => {
 
         fetch(
-            "http://localhost:3000/api/ranking"
+            "https://realmind-api.onrender.com/api/ranking"
         )
 
         .then((response) =>

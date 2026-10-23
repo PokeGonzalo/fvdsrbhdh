@@ -49,7 +49,7 @@ function StoryGame() {
     useEffect(() => {
 
         fetch(
-            `http://localhost:3000/api/history/question/${idPregunta}`
+            `https://realmind-api.onrender.com/api/history/question/${idPregunta}`
         )
         .then(res => res.json())
         .then(data => {
@@ -65,7 +65,7 @@ function StoryGame() {
 })
 
         fetch(
-            `http://localhost:3000/api/history/answers/${idPregunta}`
+            `https://realmind-api.onrender.com/api/history/answers/${idPregunta}`
         )
         .then(res => res.json())
         .then(data =>
@@ -140,7 +140,7 @@ function StoryGame() {
         try {
 
             await fetch(
-                "http://localhost:3000/api/history/progress",
+                "https://realmind-api.onrender.com/api/history/progress",
                 {
                     method: "PUT",
 
@@ -219,7 +219,7 @@ async () => {
     setTimeout(async () => {
 
         await fetch(
-            "http://localhost:3000/api/history/progress",
+            "https://realmind-api.onrender.com/api/history/progress",
             {
                 method: "PUT",
 

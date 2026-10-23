@@ -43,7 +43,7 @@ function Market() {
     const changePlan = async () => {
 
         const response = await fetch(
-            "http://localhost:3000/api/plans/update",
+            "https://realmind-api.onrender.com/api/plans/update",
             {
                 method: "PUT",
 
@@ -89,13 +89,13 @@ function Market() {
     useEffect(() => {
 
     fetch(
-        `http://localhost:3000/api/profile/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/profile/${user.idUsuario}`
     )
     .then(res => res.json())
     .then(data => setProfile(data))
 
     fetch(
-        "http://localhost:3000/api/store"
+        "https://realmind-api.onrender.com/api/store"
     )
     .then(res => res.json())
     .then(data => setItems(data))
@@ -105,7 +105,7 @@ function Market() {
 const buyItem = async (idItem) => {
 
     const response = await fetch(
-        "http://localhost:3000/api/store/buy",
+        "https://realmind-api.onrender.com/api/store/buy",
         {
             method: "POST",
 

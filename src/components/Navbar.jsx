@@ -34,7 +34,7 @@ function Navbar() {
         return
 
     fetch(
-        `http://localhost:3000/api/store/active-booster/${user.idUsuario}`
+        `https://realmind-api.onrender.com/api/store/active-booster/${user.idUsuario}`
     )
 
     .then(res => res.json())
