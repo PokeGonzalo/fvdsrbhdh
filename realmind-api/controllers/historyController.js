@@ -40,7 +40,7 @@ const getStoryQuestions =
 
 FROM HistoriaPregunta hp
 
-INNER JOIN Pregunta p
+INNER JOIN pregunta p
     ON hp.idPregunta = p.idPregunta
 
 WHERE hp.idHistoria = ?
@@ -219,7 +219,7 @@ const getStoryQuestion = (
 
     const query = `
         SELECT *
-        FROM Pregunta
+        FROM pregunta
         WHERE idPregunta = ?
     `
 

@@ -16,7 +16,7 @@ const getQuestions = (req, res) => {
 
             o.estadoRespuesta
 
-        FROM Pregunta p
+        FROM pregunta p
 
         INNER JOIN Respuesta r
             ON p.idPregunta = r.idPregunta
@@ -94,7 +94,7 @@ const getQuestionsByCategory = (req, res) => {
 
         c.nombreCategoria
 
-    FROM Pregunta p
+    FROM pregunta p
 
     INNER JOIN categoria c
         ON p.idCategoria = c.idCategoria
