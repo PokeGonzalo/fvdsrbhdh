@@ -21,7 +21,7 @@ const getQuestions = (req, res) => {
         INNER JOIN respuesta r
             ON p.idPregunta = r.idPregunta
 
-        INNER JOIN opcionRespuesta o
+        INNER JOIN opcionrespuesta o
             ON r.idOpcionRespuesta =
                o.idOpcionRespuesta
     `
@@ -102,7 +102,7 @@ const getQuestionsByCategory = (req, res) => {
     LEFT JOIN respuesta r
         ON p.idPregunta = r.idPregunta
 
-    LEFT JOIN opcionRespuesta o
+    LEFT JOIN opcionrespuesta o
         ON r.idOpcionRespuesta =
            o.idOpcionRespuesta
 

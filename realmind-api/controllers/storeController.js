@@ -288,7 +288,7 @@ const activateBooster = (req, res) => {
 
     const checkActiveQuery = `
         SELECT *
-        FROM UsuarioBoosterActivo
+        FROM usuarioboosteractivo
         WHERE idUsuario = ?
         AND activo = 1
         AND fechaExpiracion > NOW()
@@ -358,7 +358,7 @@ const activateBooster = (req, res) => {
             )
 
                     const insertQuery = `
-            INSERT INTO UsuarioBoosterActivo
+            INSERT INTO usuarioboosteractivo
             (
                 idUsuario,
                 idItem,
@@ -465,7 +465,7 @@ const getActiveBooster = (req, res) => {
         SELECT
             multiplicador,
             fechaExpiracion
-        FROM UsuarioBoosterActivo
+        FROM usuarioboosteractivo
         WHERE idUsuario = ?
         AND activo = 1
         AND fechaExpiracion > NOW()

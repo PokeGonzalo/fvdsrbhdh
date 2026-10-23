@@ -259,7 +259,7 @@ const getStoryAnswers = (
 
     FROM respuesta r
 
-    INNER JOIN opcionRespuesta o
+    INNER JOIN opcionrespuesta o
         ON r.idOpcionRespuesta =
            o.idOpcionRespuesta
 
