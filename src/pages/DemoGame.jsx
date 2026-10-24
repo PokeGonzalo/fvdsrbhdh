@@ -28,7 +28,7 @@ const [showFeedback, setShowFeedback] =
     useEffect(() => {
 
         fetch(
-            "1. https://realmind-api.onrender.com/api/games/demo"
+            "https://realmind-api.onrender.com/api/games/demo"
         )
         .then(res => res.json())
         .then(data => {
