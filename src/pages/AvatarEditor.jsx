@@ -322,25 +322,23 @@ const accessoryNames = [
         return
     }
 
-    fetch(
-        `https://realmind-api.onrender.com/api/avatars/${user.idUsuario}`
-    )
-        .then(res => res.json())
-        .then(data => {
+    fetch(`https://realmind-api.onrender.com/api/avatars/${user.idUsuario}`)
+    .then(async res => {
+        if (!res.ok) {
+            throw new Error(`Error al cargar avatar: ${res.status}`)
+        }
 
-            console.log(
-                "AVATAR GUARDADO:",
-                data
-            )
+        return res.json()
+    })
+    .then(data => {
+        console.log("AVATAR GUARDADO:", data)
 
-            if (!data) {
+        if (!data || !data.peinado) {
+            setAvatarExists(false)
+            return
+        }
 
-                setAvatarExists(false)
-
-                return
-            }
-
-            setAvatarExists(true)
+        setAvatarExists(true)
 
 
             // PELO
@@ -462,20 +460,16 @@ const accessoryNames = [
             }
 
         })
-        .catch(error => {
-
-            console.error(
-                "Error al cargar avatar:",
-                error
-            )
-
-        })
+    .catch(error => {
+        console.error("Error al cargar avatar:", error)
+    })
 
 }, [])
 
-const saveAvatar = () => {
+const saveAvatar = async () => {
 
     if (!user) {
+        setSaveMessage("No se encontró el usuario.")
         return
     }
 
@@ -483,37 +477,19 @@ const saveAvatar = () => {
 
     setSaveMessage("")
 
-
+    
     const avatarData = {
 
         idUsuario: user.idUsuario,
-
-        peinado:
-            hairstyles[hairIndex],
-
-        colorPelo:
-            hairColors[hairColorIndex],
-
-        colorPiel:
-            skinColors[skinColorIndex],
-
-        ojos:
-            eyeTypes[eyeIndex],
-
-        cejas:
-            eyebrowTypes[eyebrowIndex],
-
-        boca:
-            mouthTypes[mouthIndex],
-
-        ropa:
-            clotheTypes[clotheIndex],
-
-        colorRopa:
-            clotheColors[clotheColorIndex],
-
-        accesorio:
-            accessoryTypes[accessoryIndex]
+        peinado: hairstyles[hairIndex],
+        colorPelo: hairColors[hairColorIndex],
+        colorPiel: skinColors[skinColorIndex],
+        ojos: eyeTypes[eyeIndex],
+        cejas: eyebrowTypes[eyebrowIndex],
+        boca: mouthTypes[mouthIndex],
+        ropa: clotheTypes[clotheIndex],
+        colorRopa: clotheColors[clotheColorIndex],
+        accesorio: accessoryTypes[accessoryIndex]
 
     }
 
