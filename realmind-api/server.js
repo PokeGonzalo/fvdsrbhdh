@@ -6,9 +6,22 @@ const cors = require("cors")
 
 const app = express()
 
+const allowedOrigins = [
+    "https://fvdsrbhdh.vercel.app",
+    "https://localhost",
+    "http://localhost",
+    "capacitor://localhost"
+];
+
 app.use(cors({
-    origin: "https://fvdsrbhdh.vercel.app",
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("No permitido por CORS"));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
